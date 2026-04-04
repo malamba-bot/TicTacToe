@@ -14,15 +14,28 @@ export class Play extends Phaser.Scene {
     }
 
     create() {
+        this.board_matrix = [
+            [0, 0, 0, 0],
+            [0, 0, 0, 0],
+            [0, 0, 0, 0]
+        ]
+
+        // Initialize player
         this.player = types.cross;
+
         // Fill play area with empty tiles
         let size = globals.width / globals.grid_size;
         for (let i = 0; i < globals.grid_size; i++) {
             for (let j = 0; j < globals.grid_size; j++) {
-                new Tile(this, i * size, j * size, 'empty');
+                let tile = new Tile(this, i * size, j * size, 'empty');
+                tile.setInteractive({useHandCursor: true});
+                tile.on('pointerdown', () => {
+                    tile.flip_tile(this.player);
+                })
             }
         }
     }
+
 
         switch_player() {
             this.player = (this.player + 1) % 3;
