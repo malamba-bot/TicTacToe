@@ -15,6 +15,8 @@ export class Play extends Phaser.Scene {
 
     create() {
         this.num_moves = 0;
+        this.replaced = false;
+
         this.board_matrix = [
             [0, 0, 0, 0],
             [0, 0, 0, 0],
