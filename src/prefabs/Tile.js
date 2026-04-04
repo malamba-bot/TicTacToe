@@ -16,7 +16,7 @@ export class Tile extends Phaser.GameObjects.Sprite {
 
     flip_tile(type) {
         this.type = type;
-        console.log(Tile.texture_key[type]);
+        this.setTexture(Tile.texture_key[type]);
     }
 
     
