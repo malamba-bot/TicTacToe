@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: Backend for modded Tic Tac Toe
