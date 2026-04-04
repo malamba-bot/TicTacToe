@@ -21,5 +21,10 @@ export let game = new Phaser.Game(config);
 export const globals = {
     width: game.config.width,
     height: game.config.height,
+    grid_size: 4,
+}
+
+export const types = {
+    empty: 0, cross: 1, circle: 2, triangle: 3,
 }
 
