@@ -14,6 +14,7 @@ export class Play extends Phaser.Scene {
     }
 
     create() {
+        this.num_moves = 0;
         this.board_matrix = [
             [0, 0, 0, 0],
             [0, 0, 0, 0],
@@ -31,14 +32,18 @@ export class Play extends Phaser.Scene {
                 tile.setInteractive({useHandCursor: true});
                 tile.on('pointerdown', () => {
                     tile.flip_tile(this.player);
+                    this.switch_player();
                 })
             }
         }
     }
 
 
-        switch_player() {
+    switch_player() {
+        if (++this.num_moves > 1) {
+            this.num_moves = 0;
             this.player = (this.player + 1) % 3;
         }
+    }
 
 }
