@@ -25,6 +25,6 @@ export const globals = {
 }
 
 export const types = {
-    empty: 0, cross: 1, circle: 2, triangle: 3,
+    cross: 0, circle: 1, triangle: 2, empty: 3,
 }
 

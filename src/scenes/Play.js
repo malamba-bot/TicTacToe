@@ -14,6 +14,7 @@ export class Play extends Phaser.Scene {
     }
 
     create() {
+        this.player = types.cross;
         // Fill play area with empty tiles
         let size = globals.width / globals.grid_size;
         for (let i = 0; i < globals.grid_size; i++) {
@@ -21,6 +22,10 @@ export class Play extends Phaser.Scene {
                 new Tile(this, i * size, j * size, 'empty');
             }
         }
-
     }
+
+        switch_player() {
+            this.player = (this.player + 1) % 3;
+        }
+
 }
