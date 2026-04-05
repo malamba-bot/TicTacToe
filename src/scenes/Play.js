@@ -6,7 +6,7 @@ export class Play extends Phaser.Scene {
 
     preload() {
         this.load.setPath('./assets');
-        
+
         this.load.image('empty', 'empty.png');
         this.load.image('circle', 'circle.png');
         this.load.image('cross', 'cross.png');
@@ -18,11 +18,12 @@ export class Play extends Phaser.Scene {
         this.replaced = false;
 
         this.board_matrix = [
-            [0, 0, 0, 0],
-            [0, 0, 0, 0],
-            [0, 0, 0, 0]
+            [types.empty, types.empty, types.empty, types.empty],
+            [types.empty, types.empty, types.empty, types.empty],
+            [types.empty, types.empty, types.empty, types.empty],
+            [types.empty, types.empty, types.empty, types.empty],
         ]
-
+        
         // Initialize player
         this.player = types.cross;
 
@@ -51,10 +52,8 @@ export class Play extends Phaser.Scene {
         tile.on('pointerdown', () => {
             if (tile.type == types.empty) {
                 tile.flip_tile(this.player);
-                this.switch_player();
             } else if (tile.type != this.player && this.replaced == false) {
                 tile.flip_tile(this.player);
-                this.switch_player();
                 this.replaced = true;
             }
         })
