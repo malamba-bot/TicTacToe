@@ -28,20 +28,33 @@ export class Tile extends Phaser.GameObjects.Sprite {
         
         // Update the board matrix
         this.scene.board_matrix[this.y_pos][this.x_pos] = type;
-        this.check_win_condition();
+        console.log(this.check_win_condition());
         this.scene.switch_player();
-        console.log(this.scene.board_matrix);
     }
 
+    /*
+        * Walks through the row and column on this tile and checks if they
+        * all tiles are of this type.
+        */
     check_win_condition() {
-        // Check if the row and column are filled with the same value
+        let uniform = true;
+
+        // Check row
         for (let i = 0; i < globals.grid_size; i++) {
-            if (this.scene.board_matrix[i][this.x_pos] != this.type ||
-                this.scene.board_matrix[this.y_pos][i] != this.type) {
-                return;
+            if (this.scene.board_matrix[i][this.x_pos] != this.type) {
+               uniform = false; 
             } 
         }
-        console.log('win cond met');
+
+        if (uniform) return true;
+
+        // Check col
+        for (let i = 0; i < globals.grid_size; i++) {
+            if (this.scene.board_matrix[this.y_pos][i] != this.type) {
+                return false;
+            }
+        }
+        return true;
     }
     
 }
