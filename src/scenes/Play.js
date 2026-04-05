@@ -33,7 +33,6 @@ export class Play extends Phaser.Scene {
         }
     }
 
-
     switch_player() {
         if (++this.num_moves > 1) {
             this.num_moves = 0;
@@ -50,8 +49,8 @@ export class Play extends Phaser.Scene {
             if (tile.type == types.empty) {
                 tile.flip_tile(this.player);
             } else if (tile.type != this.player && this.replaced == false) {
-                tile.flip_tile(this.player);
                 this.replaced = true;
+                tile.flip_tile(this.player);
             }
         })
     }
