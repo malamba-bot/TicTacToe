@@ -1,16 +1,13 @@
+// http://127.0.0.1:5500/?mode=playScene
+
 import {globals} from '../main.js'
 import {types} from '../main.js'
 import {Tile} from '../prefabs/Tile.js'
 
 export class Play extends Phaser.Scene {
 
-    preload() {
-        this.load.setPath('./assets');
-
-        this.load.image('empty', 'empty.png');
-        this.load.image('circle', 'circle.png');
-        this.load.image('cross', 'cross.png');
-        this.load.image('triangle', 'triangle.png');
+    constructor() {
+        super('playScene');
     }
 
     create() {
