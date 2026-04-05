@@ -2,6 +2,8 @@ import {Initialize} from './scenes/Initialize.js'
 import {MainMenu} from './scenes/MainMenu.js'
 import {Play} from './scenes/Play.js'
 
+const urlQueryParams = new URLSearchParams(window.location.search);
+
 let config = {
     type: Phaser.WEBGL,
     width: 800,
@@ -16,7 +18,7 @@ let config = {
     scale: {
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    scene: [Initialize, MainMenu, Play],
+    scene: [new Initialize(urlQueryParams.get('mode')), MainMenu, Play],
 }
 
 export let game = new Phaser.Game(config);

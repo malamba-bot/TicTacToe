@@ -1,3 +1,5 @@
+// http://127.0.0.1:5500/?mode=playScene
+
 import {globals} from '../main.js'
 import {types} from '../main.js'
 import {Tile} from '../prefabs/Tile.js'
