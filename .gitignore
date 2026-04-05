@@ -1,7 +1,10 @@
 .env
 /backend/.gradle
 /backend/.idea
+/backend/.intellijPlatform
 /backend/build
+/backend/tictactoe-server-api
+/tictactoe-client-api
 
 ### IntelliJ IDEA ###
 .idea/

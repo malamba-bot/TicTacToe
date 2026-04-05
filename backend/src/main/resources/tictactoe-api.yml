@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: "API Spec for modded Tic Tac Toe"
+  version: "1.0.0"
+
+# https://learn.openapis.org/specification/paths.html
+paths:
+  /game/state:
+
+    get:
+      description: Gets the board state
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BoardState"
+
+    patch:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlayerAction'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BoardState"
+        # Nothing custom to describe for other HTTP codes, but they will still happen.
+        #  For example, if it's not the player's turn yet then HTTP code 403 will throw
+
+components:
+  schemas:
+
+    BoardState:
+      type: object
+      properties:
+        board:
+          description: Flat array containing indices of which player placed the piece, or -1 if unclaimed.
+          type: array
+          items:
+            type: integer
+        round:
+          description: Amount of turns that the game has progressed.
+          type: integer
+        turn:
+          description: Index for whose turn it is.
+          type: integer
+      required:
+        - board
+        - round
+        - turn
+
+    PlayerAction:
+      type: object
+      properties:
+        x-coordinate:
+          type: integer
+        y-coordinate:
+          type: integer
+      required:
+        - x-coordinate
+        - y-coordinate
+
