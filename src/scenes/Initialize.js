@@ -14,7 +14,7 @@ export class Initialize extends Phaser.Scene {
     }
 
     create() {
-        this.scene.start('playScene');
+        this.scene.start('mainMenuScene');
     }
 
 }

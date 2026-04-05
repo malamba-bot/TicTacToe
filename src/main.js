@@ -1,10 +1,12 @@
 import {Initialize} from './scenes/Initialize.js'
+import {MainMenu} from './scenes/MainMenu.js'
 import {Play} from './scenes/Play.js'
 
 let config = {
     type: Phaser.WEBGL,
     width: 800,
     height: 800,
+    backgroundColor: '#facade',
     physics: { 
         default: 'arcade',
         arcade: {
@@ -14,7 +16,7 @@ let config = {
     scale: {
         autoCenter: Phaser.Scale.CENTER_BOTH,
     },
-    scene: [Initialize, Play],
+    scene: [Initialize, MainMenu, Play],
 }
 
 export let game = new Phaser.Game(config);
