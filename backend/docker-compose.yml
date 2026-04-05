@@ -1,0 +1,8 @@
+services:
+  tictactoe-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tictactoe-server-app
+    ports:
+      - "8081:8080"
