@@ -4,13 +4,8 @@ import {Tile} from '../prefabs/Tile.js'
 
 export class Play extends Phaser.Scene {
 
-    preload() {
-        this.load.setPath('./assets');
-
-        this.load.image('empty', 'empty.png');
-        this.load.image('circle', 'circle.png');
-        this.load.image('cross', 'cross.png');
-        this.load.image('triangle', 'triangle.png');
+    constructor() {
+        super('playScene');
     }
 
     create() {
