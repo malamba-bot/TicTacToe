@@ -40,11 +40,12 @@ export class Play extends Phaser.Scene {
     }
 
     switch_player() {
-            this.player_moves = 0;
-            this.player = this.next_player();
-            this.replaced = false;
-            this.player_image.setTexture(globals.texture_key[this.player]);
-            this.player_next_image.setTexture(globals.texture_key[this.next_player()]);
+        this.player_moves = 0;
+        this.player = this.next_player();
+        this.replaced = false;
+        this.player_image.setTexture(globals.texture_key[this.player]);
+        this.player_next_image.setTexture(globals.texture_key[this.next_player()]);
+        this.reset_timer();
     }
 
     next_player() {
@@ -58,8 +59,8 @@ export class Play extends Phaser.Scene {
 
     create_timer() {
         this.play_timer = this.time.addEvent({
-            delay: 60000,
-            callback: this.reset_timer,
+            delay: globals.turn_time,
+            callback: this.switch_player,
             callbackScope: this,
             loop: false
         });
@@ -108,10 +109,9 @@ export class Play extends Phaser.Scene {
     }
 
     reset_timer() {
-        this.switch_player();
         this.play_timer.reset({
-            delay: 60000,
-            callback: this.reset_timer,
+            delay: globals.turn_time,
+            callback: this.switch_player,
             callbackScope: this,
             loop: false
         });

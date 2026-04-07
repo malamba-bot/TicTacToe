@@ -35,6 +35,7 @@ export const globals = {
         red: 0xC11D1F,
     },
     texture_key: ['cross', 'circle', 'triangle'],
+    turn_time: 6000,
 }
 
 export const types = {

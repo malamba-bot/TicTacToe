@@ -50,7 +50,7 @@ export class Tile extends Phaser.GameObjects.Sprite {
             console.log('the board is full');
         }
 
-        if (this.player_moves > 1) {
+        if (this.scene.player_moves > 1) {
             this.scene.switch_player();
         }
     }
