@@ -2,9 +2,6 @@ import {globals} from '../main.js'
 import {types} from '../main.js'
 
 export class Tile extends Phaser.GameObjects.Sprite {
-
-    static texture_key = ['cross', 'circle', 'triangle'];
-
     constructor(scene, x, y, texture) {
         super(scene, x, y, texture);
         this.scene = scene;
@@ -12,7 +9,7 @@ export class Tile extends Phaser.GameObjects.Sprite {
 
         let tile_res = {
             x: globals.width / globals.grid_size,
-            y: globals.height / globals.grid_size 
+            y: globals.board_height / globals.grid_size 
         }
         this.x_pos = x / tile_res.x;
         this.y_pos = y / tile_res.y; 
@@ -40,7 +37,7 @@ export class Tile extends Phaser.GameObjects.Sprite {
 
     flip_tile(type) {
         this.type = type;
-        this.setTexture(Tile.texture_key[type]);
+        this.setTexture(globals.texture_key[type]);
 
         // Update the board matrix
         this.scene.board_matrix[this.y_pos][this.x_pos] = type;
@@ -51,7 +48,6 @@ export class Tile extends Phaser.GameObjects.Sprite {
         } else if (this.check_board_full()) {
             console.log('the board is full');
         }
-
         this.scene.switch_player();
     }
 

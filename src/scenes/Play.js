@@ -34,14 +34,51 @@ export class Play extends Phaser.Scene {
                 this.create_tile(i, j, size);
             }
         }
+
+        // Add current player text
+        let playing_text = this.add.text(
+            globals.padding,
+            globals.board_height + globals.padding * 5, 
+            'Playing -  ',
+            {
+                fontSize: 48,
+            }
+        ).setOrigin(0);
+
+        let playing_next_text = this.add.text(
+            globals.padding,
+            playing_text.y + playing_text.height+ globals.padding * 5, 
+            'Next up -  ',
+            {
+                fontSize: 48,
+            }
+        ).setOrigin(0);
+
+        this.player_image = this.add.image(
+            playing_text.x + playing_text.width,
+            playing_text.y + playing_text.height / 2,
+            globals.texture_key[this.player],
+        ).setOrigin(0.5);
+
+        this.player_next_image = this.add.image(
+            playing_next_text.x + playing_next_text.width,
+            playing_next_text.y + playing_next_text.height / 2,
+            globals.texture_key[this.next_player()],
+        ).setOrigin(0.5);
     }
 
     switch_player() {
         if (++this.player_moves > 1) {
             this.player_moves = 0;
-            this.player = (this.player + 1) % 3;
+            this.player = this.next_player();
             this.replaced = false;
+            this.player_image.setTexture(globals.texture_key[this.player]);
+            this.player_next_image.setTexture(globals.texture_key[this.next_player()]);
         }
+    }
+
+    next_player() {
+        return (this.player + 1) % 3
     }
 
     create_tile(i, j, size) {

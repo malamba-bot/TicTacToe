@@ -7,7 +7,7 @@ const urlQueryParams = new URLSearchParams(window.location.search);
 let config = {
     type: Phaser.WEBGL,
     width: 800,
-    height: 800,
+    height: 1000,
     backgroundColor: '#1F1F21',
     physics: { 
         default: 'arcade',
@@ -25,14 +25,15 @@ export let game = new Phaser.Game(config);
 
 export const globals = {
     width: game.config.width,
-    height: game.config.height,
+    board_height: game.config.height - 200,
     grid_size: 4,
     padding: 6,
     border: 2,
     colors: {
         green: 0x4DAD48,
         red: 0xC11D1F,
-    }
+    },
+    texture_key: ['cross', 'circle', 'triangle'],
 }
 
 export const types = {
