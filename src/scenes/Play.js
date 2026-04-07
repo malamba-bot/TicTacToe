@@ -43,16 +43,7 @@ export class Play extends Phaser.Scene {
 
     create_tile(i, j, size) {
         let tile = new Tile(this, i * size, j * size, 'empty');
-        tile.setInteractive({useHandCursor: true});
-        // Add listener that only flips up to one non-empty tile per turn
-        tile.on('pointerdown', () => {
-            if (tile.type == types.empty) {
-                tile.flip_tile(this.player);
-            } else if (tile.type != this.player && this.replaced == false) {
-                this.replaced = true;
-                tile.flip_tile(this.player);
-            }
-        })
+        tile.setInteractive();
     }
 
 }

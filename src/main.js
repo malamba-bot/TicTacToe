@@ -8,7 +8,7 @@ let config = {
     type: Phaser.WEBGL,
     width: 800,
     height: 800,
-    backgroundColor: '#facade',
+    backgroundColor: '#1F1F21',
     physics: { 
         default: 'arcade',
         arcade: {
@@ -27,6 +27,12 @@ export const globals = {
     width: game.config.width,
     height: game.config.height,
     grid_size: 4,
+    padding: 6,
+    border: 2,
+    colors: {
+        green: 0x4DAD48,
+        red: 0xC11D1F,
+    }
 }
 
 export const types = {
