@@ -11,7 +11,10 @@ export class Play extends Phaser.Scene {
     }
 
     create() {
-        this.num_moves = 0;
+        this.total_placed = 0;
+        this.total_replaced = 0;
+
+        this.player_moves = 0;
         this.replaced = false;
 
         this.board_matrix = [
@@ -34,8 +37,8 @@ export class Play extends Phaser.Scene {
     }
 
     switch_player() {
-        if (++this.num_moves > 1) {
-            this.num_moves = 0;
+        if (++this.player_moves > 1) {
+            this.player_moves = 0;
             this.player = (this.player + 1) % 3;
             this.replaced = false;
         }

@@ -44,9 +44,21 @@ export class Tile extends Phaser.GameObjects.Sprite {
 
         // Update the board matrix
         this.scene.board_matrix[this.y_pos][this.x_pos] = type;
-        if (this.check_win_condition())
+        this.scene.total_placed++;
+
+        if (this.check_win_condition()) {
             console.log('won');
+        } else if (this.check_board_full()) {
+            console.log('the board is full');
+        }
+
         this.scene.switch_player();
+    }
+
+    check_board_full() {
+        return this.scene.replaced == true && 
+            this.scene.total_placed - this.scene.total_replaced
+            >= globals.grid_size * globals.grid_size;
     }
 
     /*
@@ -114,6 +126,7 @@ export class Tile extends Phaser.GameObjects.Sprite {
                     this.flip_tile(this.scene.player);
                 } else if (this.type != this.scene.player && this.scene.replaced == false) {
                     this.scene.replaced = true;
+                    this.scene.total_replaced++;
                     this.flip_tile(this.scene.player);
                 }
             })
