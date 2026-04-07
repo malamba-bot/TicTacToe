@@ -25,9 +25,12 @@ export class Tile extends Phaser.GameObjects.Sprite {
             tile_res.x - globals.padding * 2,
             tile_res.y - globals.padding * 2, 
             null,
-            0)
-            .setOrigin(0).setRounded(4).setInteractive();
-        this.tile.setStrokeStyle(globals.border, 0xFFFFFF)
+            0
+        )
+            .setOrigin(0)
+            .setRounded(globals.rounding)
+            .setInteractive() 
+            .setStrokeStyle(globals.border, 0xFFFFFF);
 
         this.add_listeners();
 
@@ -36,6 +39,10 @@ export class Tile extends Phaser.GameObjects.Sprite {
     }
 
     flip_tile(type) {
+        if (this.scene.game_over) {
+            return;
+        }
+
         this.type = type;
         this.setTexture(globals.texture_key[type]);
 
@@ -45,9 +52,9 @@ export class Tile extends Phaser.GameObjects.Sprite {
         this.scene.player_moves++;
 
         if (this.check_win_condition()) {
-            console.log('won');
+            this.scene.end_game(`${globals.texture_key[this.type]} wins!`);
         } else if (this.check_board_full()) {
-            console.log('the board is full');
+            this.scene.end_game('draw!');
         }
 
         if (this.scene.player_moves > 1) {

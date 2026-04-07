@@ -26,16 +26,23 @@ export let game = new Phaser.Game(config);
 
 export const globals = {
     width: game.config.width,
+    height: game.config.height,
     board_height: game.config.height - 200,
     grid_size: 4,
     padding: 6,
     border: 2,
+    rounding: 4,
+
+    texture_key: ['cross', 'circle', 'triangle'],
+    turn_time: 60000,
+
     colors: {
         green: 0x4DAD48,
         red: 0xC11D1F,
     },
-    texture_key: ['cross', 'circle', 'triangle'],
-    turn_time: 6000,
+    text_config: {
+        fontSize: 48
+    },
 }
 
 export const types = {
