@@ -42,13 +42,17 @@ export class Tile extends Phaser.GameObjects.Sprite {
         // Update the board matrix
         this.scene.board_matrix[this.y_pos][this.x_pos] = type;
         this.scene.total_placed++;
+        this.scene.player_moves++;
 
         if (this.check_win_condition()) {
             console.log('won');
         } else if (this.check_board_full()) {
             console.log('the board is full');
         }
-        this.scene.switch_player();
+
+        if (this.player_moves > 1) {
+            this.scene.switch_player();
+        }
     }
 
     check_board_full() {
