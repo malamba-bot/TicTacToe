@@ -6,3 +6,27 @@ services:
     container_name: tictactoe-server-app
     ports:
       - "8081:8080"
+    environment:
+      GITHUB_ID: ${GITHUB_ID}
+      GITHUB_SECRET: ${GITHUB_SECRET}
+      REDIRECT_URL: ${REDIRECT_URL}
+      SPRING_DATASOURCE_URL: jdbc:mariadb://tictactoe-mariadb:3306/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASS}
+    depends_on:
+      - tictactoe-mariadb
+
+  tictactoe-mariadb:
+    image: mariadb:11.8
+    container_name: tictactoe-mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    restart: always
+    volumes:
+      - mariadb-volume-tictactoe:/var/lib/mysql
+
+volumes:
+  mariadb-volume-tictactoe:

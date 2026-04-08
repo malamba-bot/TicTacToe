@@ -38,6 +38,10 @@ dependencies {
 
     implementation("io.swagger.core.v3:swagger-annotations:2.2.46")
     implementation("io.swagger:swagger-annotations:1.6.16")
+
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-client")
+    implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
+    implementation("org.springframework.boot:spring-boot-starter-security")
 }
 
 // https://www.thewokecoder.io/generate-controller-interfaces-with-gradle/ (Caveat: Article shows Groovy not Kotlin script)

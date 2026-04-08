@@ -1,9 +1,19 @@
 spring:
   application:
     name: Backend for modded Tic Tac Toe
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: ${GITHUB_ID}
+            client-secret: ${GITHUB_SECRET}
   jpa:
     hibernate:
       ddl-auto: update
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
+
+auth:
+  redirect-url: ${REDIRECT_URL}
