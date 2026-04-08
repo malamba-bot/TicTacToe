@@ -27,6 +27,9 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
 
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    runtimeOnly("org.mariadb.jdbc:mariadb-java-client")
+
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
 
@@ -39,7 +42,7 @@ dependencies {
 
 // https://www.thewokecoder.io/generate-controller-interfaces-with-gradle/ (Caveat: Article shows Groovy not Kotlin script)
 tasks.register<GenerateTask>("generateGameServerApi") {
-    // Sets for gradle sync
+    // Only run if files updated
     inputs.file(openApiSpecPath)
     outputs.dir(openApiGeneratePath)
 

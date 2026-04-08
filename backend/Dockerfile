@@ -11,7 +11,7 @@ COPY build.gradle.kts gradle.properties settings.gradle.kts ./
 COPY src src
 
 # Build the fat JAR
-RUN ./gradlew clean build --no-daemon
+RUN gradle clean build --no-daemon
 
 # --- Runtime stage: run the app ---
 FROM eclipse-temurin:25

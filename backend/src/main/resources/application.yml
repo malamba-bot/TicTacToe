@@ -1,3 +1,9 @@
 spring:
   application:
     name: Backend for modded Tic Tac Toe
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
