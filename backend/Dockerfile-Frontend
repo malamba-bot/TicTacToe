@@ -10,7 +10,7 @@ WORKDIR /webgame
 RUN mkdir src/
 RUN mkdir assets/
 
-COPY index.html login.html phaser.js ./
+COPY index.html phaser.js ./
 COPY assets assets
 COPY lib lib
 COPY src src
