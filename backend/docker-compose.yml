@@ -1,4 +1,12 @@
 services:
+  tictactoe-frontend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile-Frontend
+    container_name: tictactoe-frontend
+    ports:
+      - "80:80"
+
   tictactoe-server:
     build:
       context: .

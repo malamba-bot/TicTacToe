@@ -1,0 +1,24 @@
+# Copied from https://github.com/Drullkus/HelloPhaser/blob/simple/Dockerfile
+FROM node:25
+
+# PNPM needs a global dir defined
+ENV PNPM_HOME=/usr/local/pnpm
+ENV PATH=$PNPM_HOME:$PATH
+
+WORKDIR /webgame
+
+RUN mkdir src/
+RUN mkdir assets/
+
+COPY index.html login.html phaser.js ./
+COPY assets assets
+COPY lib lib
+COPY src src
+
+# Install pnpm then use it to obtain the http-server
+RUN npm install -g pnpm
+RUN pnpm add -g http-server
+
+EXPOSE 80
+
+CMD "http-server" "." "-p" "80"
