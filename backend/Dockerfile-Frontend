@@ -21,4 +21,4 @@ RUN pnpm add -g http-server
 
 EXPOSE 80
 
-CMD "http-server" "." "-p" "80"
+CMD sh -c "http-server . -p 80 --cors \"$CORS\""

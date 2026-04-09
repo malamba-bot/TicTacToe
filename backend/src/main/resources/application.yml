@@ -8,6 +8,7 @@ spring:
           github:
             client-id: ${GITHUB_ID}
             client-secret: ${GITHUB_SECRET}
+            redirect-uri: ${REDIRECT_URL}/login/oauth2/code/github
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,5 +16,15 @@ spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
 
+server:
+  forward-headers-strategy: framework
+  servlet:
+    session:
+      cookie:
+        domain: ${COOKIE_DOMAIN}
+        http-only: false
+        same-site: none
+        secure: true
+
 auth:
-  redirect-url: ${REDIRECT_URL}
+  target-url: ${TARGET_URL}

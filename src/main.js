@@ -43,6 +43,10 @@ export const globals = {
     text_config: {
         fontSize: 48
     },
+
+    // Allow multiplayer on these domains (locked to these domains due to Github OAuth app configuration)
+    remote_play_domains: new Set(['tic-tac-toe.drullk.us', 'tic-tac-toe-test.drullk.us']),
+    api_url: 'https://tic-tac-toe-api.drullk.us',
 }
 
 export const types = {

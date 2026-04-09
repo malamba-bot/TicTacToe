@@ -3,6 +3,8 @@ services:
     build:
       context: ..
       dockerfile: backend/Dockerfile-Frontend
+    env_file:
+      - .env
     container_name: tictactoe-frontend
     ports:
       - "80:80"
@@ -15,9 +17,11 @@ services:
     ports:
       - "8081:8080"
     environment:
+      COOKIE_DOMAIN: ${COOKIE_DOMAIN}
       GITHUB_ID: ${GITHUB_ID}
       GITHUB_SECRET: ${GITHUB_SECRET}
       REDIRECT_URL: ${REDIRECT_URL}
+      TARGET_URL: ${TARGET_URL}
       SPRING_DATASOURCE_URL: jdbc:mariadb://tictactoe-mariadb:3306/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: ${DB_USER}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASS}

@@ -25,10 +25,10 @@ public class GithubBasedOAuthUserHandler extends SavedRequestAwareAuthentication
 
 	private final PlayerRepository panelUserRepository;
 
-	public GithubBasedOAuthUserHandler(@Value("${auth.redirect-url}") String defaultRedirectUrl, PlayerRepository panelUserRepository) {
+	public GithubBasedOAuthUserHandler(@Value("${auth.target-url}") String targetUrl, PlayerRepository panelUserRepository) {
 		this.panelUserRepository = panelUserRepository;
 
-		this.setDefaultTargetUrl(defaultRedirectUrl);
+		this.setDefaultTargetUrl(targetUrl);
 		this.setAlwaysUseDefaultTargetUrl(true);
 	}
 

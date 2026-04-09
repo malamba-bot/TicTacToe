@@ -20,13 +20,13 @@ public class SecurityConfig {
 	}
 
 	@Bean
-	public SecurityFilterChain securityFilterChain(@Value("${auth.redirect-url}") String defaultRedirectUrl, HttpSecurity http) throws Exception {
+	public SecurityFilterChain securityFilterChain(@Value("${auth.target-url}") String targetUrl, HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authorizeRequests -> authorizeRequests
 				.requestMatchers("/", "/error", "/oauth2", "/oauth2/**", "/actuator/health").permitAll()
 				.anyRequest().authenticated()
 		).csrf(AbstractHttpConfigurer::disable).cors(AbstractHttpConfigurer::disable).oauth2Login(oauthConfig -> oauthConfig
 				.loginPage("/oauth2/authorization/github")
-				.defaultSuccessUrl(defaultRedirectUrl, true)
+				.defaultSuccessUrl(targetUrl, true)
 				.successHandler(this.githubBasedOAuthUserHandler)
 		).logout(httpSecurityLogoutConfigurer -> httpSecurityLogoutConfigurer
 				.invalidateHttpSession(true)
